@@ -4,6 +4,8 @@ Simple and type safe json-rpc 2.0 server and client solution for node.js.
 
 ## Maybe the best style for server and client communication using TS ✨
 
+> At first, thanks for [cell.js](https://github.com/cellbang/cell) for the inspiration. 😁
+
 Just a vite plugin:
 
 ```ts
