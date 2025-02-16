@@ -1,4 +1,3 @@
-/* eslint-disable ts/no-redeclare */
 import type { Result } from '@nanorpc/types'
 import type { AxiosInstance } from 'axios'
 import { createRpcServer, defineController, InternalAdapter } from '@nanorpc/server'

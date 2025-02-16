@@ -85,6 +85,9 @@ export function createNodeWebSocketAdapter(options: import('ws').ServerOptions =
         plugins.push(plugin)
         return this as NodeWebSocketServer
       },
+      getPlugins() {
+        return plugins
+      },
       async setup(handler) {
         if (!server)
           throw new Error('Cannot call `handle()` method, because doesn\'t call listen() before.')

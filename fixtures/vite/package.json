@@ -1,0 +1,12 @@
+{
+  "name": "fixture-vite",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "nanorpc": "workspace:*"
+  }
+}

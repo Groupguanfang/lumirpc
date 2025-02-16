@@ -5,5 +5,6 @@ export default antfu({
   // Add your custom rules here~
   rules: {
     'ts/method-signature-style': ['error', 'method'],
+    'ts/no-redeclare': 'off',
   },
 })

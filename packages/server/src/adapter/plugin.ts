@@ -1,5 +1,6 @@
 export interface Plugin {
   name: string
+  install?(): unknown | Promise<unknown>
 }
 
 export interface NodeHttpBeforeHandleContext {
