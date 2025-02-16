@@ -2,7 +2,7 @@
 
 Simple and type safe json-rpc 2.0 server and client solution for node.js.
 
-## Maybe the best style for server and client communication using typescript ✨
+## Maybe the best style for server and client communication using TS ✨
 
 Just a vite plugin:
 
