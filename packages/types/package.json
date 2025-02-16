@@ -1,0 +1,31 @@
+{
+  "name": "@nanorpc/types",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Type and edit utils for nanorpc.",
+  "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
+  "keywords": [
+    "es-project-template"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup -w",
+    "prepublishOnly": "tsup"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "nanoid": "^5.1.0"
+  }
+}

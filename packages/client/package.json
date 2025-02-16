@@ -1,0 +1,32 @@
+{
+  "name": "@nanorpc/client",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Client to connect a nanorpc server.",
+  "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
+  "keywords": [
+    "es-project-template"
+  ],
+  "exports": {
+    "./axios": {
+      "types": "./dist/axios.d.ts",
+      "import": "./dist/axios.js",
+      "require": "./dist/axios.cjs"
+    }
+  },
+  "main": "./dist/axios.cjs",
+  "module": "./dist/axios.js",
+  "types": "./dist/axios.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup -w"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@nanorpc/server": "workspace:*",
+    "axios": "^1.7.9",
+    "nanoid": "^5.1.0"
+  }
+}

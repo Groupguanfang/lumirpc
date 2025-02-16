@@ -1,0 +1,39 @@
+{
+  "name": "@nanorpc/server",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Server utils for nanorpc.",
+  "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
+  "keywords": [
+    "es-project-template"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup -w",
+    "prepublishOnly": "tsup"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@nanorpc/types": "workspace:*",
+    "@types/ws": "^8.5.14",
+    "defu": "^6.1.4",
+    "nanoid": "^5.1.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "lodash-es": "^4.17.21"
+  }
+}

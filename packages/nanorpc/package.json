@@ -1,0 +1,36 @@
+{
+  "name": "nanorpc",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Json rpc protocol base &amp; type safe rpc client and server solutions.",
+  "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
+  "keywords": [
+    "es-project-template"
+  ],
+  "exports": {
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.js",
+      "require": "./dist/node.cjs"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js",
+      "require": "./dist/server.cjs"
+    }
+  },
+  "main": "./dist/node.cjs",
+  "module": "./dist/node.js",
+  "types": "./dist/node.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "watch": "tsup -w",
+    "prepublishOnly": "tsup"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@nanorpc/server": "workspace:*"
+  }
+}
