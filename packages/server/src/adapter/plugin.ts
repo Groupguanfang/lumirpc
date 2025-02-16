@@ -16,7 +16,19 @@ export interface NodeHttpPlugin extends Plugin {
   onError?(ctx: NodeHttpOnErrorContext): Promise<unknown> | unknown
 }
 
-export interface NodeWebSocketPlugin extends Plugin {}
+export interface NodeWebSocketBeforeHandleContext {
+  use(middleware: (ws: import('ws').WebSocket) => unknown | Promise<unknown>): this
+}
+
+export interface NodeWebSocketAfterHandleContext extends NodeWebSocketBeforeHandleContext {}
+
+export interface NodeWebSocketOnErrorContext extends NodeWebSocketBeforeHandleContext {}
+
+export interface NodeWebSocketPlugin extends Plugin {
+  beforeHandle?(ctx: NodeWebSocketBeforeHandleContext): Promise<unknown> | unknown
+  afterHandle?(ctx: NodeWebSocketAfterHandleContext): Promise<unknown> | unknown
+  onError?(ctx: NodeWebSocketOnErrorContext): Promise<unknown> | unknown
+}
 
 type InferParams<T> = T extends (...args: infer P) => unknown ? P : []
 type InferReturn<T> = T extends (...args: any[]) => infer R ? R : unknown

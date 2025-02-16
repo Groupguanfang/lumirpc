@@ -12,20 +12,30 @@
       "types": "./dist/axios.d.ts",
       "import": "./dist/axios.js",
       "require": "./dist/axios.cjs"
+    },
+    "./socket": {
+      "types": "./dist/socket.d.ts",
+      "import": "./dist/socket.js",
+      "require": "./dist/socket.cjs"
     }
   },
   "main": "./dist/axios.cjs",
   "module": "./dist/axios.js",
   "types": "./dist/axios.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
-    "watch": "tsup -w"
+    "watch": "tsup -w",
+    "prepublishOnly": "tsup"
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@nanorpc/server": "workspace:*",
+    "@nanorpc/types": "workspace:*",
     "axios": "^1.7.9",
     "nanoid": "^5.1.0"
   }

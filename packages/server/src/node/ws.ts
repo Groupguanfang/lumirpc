@@ -1,6 +1,7 @@
-import type { NodeWebSocketPlugin } from '../adapter/plugin'
+import type { Adapter, RpcServer } from '../adapter'
+import type { NodeWebSocketAfterHandleContext, NodeWebSocketBeforeHandleContext, NodeWebSocketOnErrorContext, NodeWebSocketPlugin } from '../adapter/plugin'
 import defu from 'defu'
-import { type Adapter, RpcException, type RpcServer } from '../adapter'
+import { executePluginHook, RpcException } from '../adapter'
 
 export interface NodeWebSocketServer extends RpcServer {
   listen(port: number): Promise<import('ws').Server>
@@ -16,6 +17,45 @@ export function createNodeWebSocketAdapter(options: import('ws').ServerOptions =
     const ws = await import('ws')
     let server: import('ws').Server | null = null
     const plugins: NodeWebSocketPlugin[] = []
+
+    async function getBeforeHandleMiddlewares(plugins: NodeWebSocketPlugin[]): Promise<Parameters<NodeWebSocketBeforeHandleContext['use']>[0][]> {
+      const middlewares: Parameters<NodeWebSocketBeforeHandleContext['use']>[0][] = []
+      await executePluginHook(plugins, 'beforeHandle', [
+        {
+          use(middleware) {
+            middlewares.push(middleware)
+            return this as NodeWebSocketBeforeHandleContext
+          },
+        },
+      ])
+      return middlewares
+    }
+
+    async function getAfterHandleMiddlewares(plugins: NodeWebSocketPlugin[]): Promise<Parameters<NodeWebSocketAfterHandleContext['use']>[0][]> {
+      const middlewares: Parameters<NodeWebSocketAfterHandleContext['use']>[0][] = []
+      await executePluginHook(plugins, 'afterHandle', [
+        {
+          use(middleware) {
+            middlewares.push(middleware)
+            return this as NodeWebSocketAfterHandleContext
+          },
+        },
+      ])
+      return middlewares
+    }
+
+    async function getOnErrorMiddlewares(plugins: NodeWebSocketPlugin[]): Promise<Parameters<NodeWebSocketOnErrorContext['use']>[0][]> {
+      const middlewares: Parameters<NodeWebSocketOnErrorContext['use']>[0][] = []
+      await executePluginHook(plugins, 'onError', [
+        {
+          use(middleware) {
+            middlewares.push(middleware)
+            return this as NodeWebSocketOnErrorContext
+          },
+        },
+      ])
+      return middlewares
+    }
 
     return {
       overrideWebSocketOptions(overrideOptions) {
@@ -52,6 +92,9 @@ export function createNodeWebSocketAdapter(options: import('ws').ServerOptions =
         server.on('connection', (ws) => {
           ws.on('message', async (data) => {
             try {
+              const beforeMiddlewares = await getBeforeHandleMiddlewares(plugins)
+              for (const middleware of beforeMiddlewares)
+                await middleware(ws)
               const payload = data.toString()
               const parsed = JSON.parse(payload)
 
@@ -62,8 +105,15 @@ export function createNodeWebSocketAdapter(options: import('ws').ServerOptions =
                 id: parsed.id,
               })
               ws.send(JSON.stringify(result))
+              const afterMiddlewares = await getAfterHandleMiddlewares(plugins)
+              for (const middleware of afterMiddlewares)
+                await middleware(ws)
             }
             catch (error) {
+              const onErrorMiddlewares = await getOnErrorMiddlewares(plugins)
+              for (const middleware of onErrorMiddlewares)
+                await middleware(ws)
+
               const rpcError = RpcException.from(error)
               ws.send(JSON.stringify(rpcError))
             }

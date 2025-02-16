@@ -1,1 +1,1 @@
-export default 'Hello, world!'
+export * from '@nanorpc/server/node'

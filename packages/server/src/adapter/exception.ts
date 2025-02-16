@@ -1,6 +1,6 @@
-import { createErrorBuilder, type Error as RpcError } from '@nanorpc/types'
+import type { Error as RpcError } from '@nanorpc/types'
+import { createErrorBuilder, typeAssert } from '@nanorpc/types'
 import { nanoid } from 'nanoid'
-import { typeAssert } from '../utils'
 
 export class RpcException<TData = unknown> extends Error {
   constructor(
@@ -8,9 +8,7 @@ export class RpcException<TData = unknown> extends Error {
     public readonly code: number = -32000,
     public readonly data?: TData,
     public readonly id = nanoid(),
-  ) {
-    super(message)
-  }
+  ) { super(message) }
 
   public readonly jsonrpc = '2.0'
 
