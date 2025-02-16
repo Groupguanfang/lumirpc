@@ -1,6 +1,7 @@
 import type { Buffer } from 'node:buffer'
+import type { Adapter, RpcServer } from '../adapter'
 import type { NodeHttpAfterHandleContext, NodeHttpBeforeHandleContext, NodeHttpOnErrorContext, NodeHttpPlugin } from '../adapter/plugin'
-import { type Adapter, RpcException, type RpcServer } from '../adapter'
+import { RpcException } from '../adapter'
 import { executePluginHook } from '../adapter/plugin'
 
 export interface NodeHttpServer extends RpcServer {
