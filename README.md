@@ -1,3 +1,3 @@
-# 我的项目
+# nanorpc
 
-> 这是一个使用 es-project 创建的 monorepo 项目。
+Simple and type safe json-rpc 2.0 server and client solution for node.js.
