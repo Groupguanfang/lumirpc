@@ -1,4 +1,4 @@
-# @nanorpc/types
+# @lumirpc/types
 
 ## 0.0.6
 
