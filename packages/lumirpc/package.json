@@ -1,7 +1,7 @@
 {
   "name": "lumirpc",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Json rpc protocol base &amp; type safe rpc client and server solutions.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "license": "MIT",

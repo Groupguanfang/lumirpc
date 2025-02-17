@@ -1,5 +1,12 @@
 # @nano-rpc/logger
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies [d044076]
+  - lumirpc@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes
