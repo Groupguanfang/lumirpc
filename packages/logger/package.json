@@ -1,7 +1,7 @@
 {
   "name": "@nanorpc/logger",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Logger for nanorpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
@@ -12,7 +12,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./dist/*": "./dist/*"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

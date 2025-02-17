@@ -1,7 +1,7 @@
 {
   "name": "@nanorpc/server",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Server utils for nanorpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
