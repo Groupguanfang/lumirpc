@@ -1,1 +1,1 @@
-export * from '@nanorpc/server/node'
+export * from '@nano-rpc/server/node'

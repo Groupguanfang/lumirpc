@@ -1,5 +1,5 @@
-import NanoRpc from '@nanorpc/unplugin'
+import NanoRpc from '@nano-rpc/unplugin'
 
-export * from '@nanorpc/unplugin'
-export * from '@nanorpc/unplugin/types'
+export * from '@nano-rpc/unplugin'
+export * from '@nano-rpc/unplugin/types'
 export default NanoRpc

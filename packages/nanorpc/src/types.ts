@@ -1,1 +1,1 @@
-export * from '@nanorpc/types'
+export * from '@nano-rpc/types'

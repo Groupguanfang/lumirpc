@@ -1,1 +1,1 @@
-export * from '@nanorpc/client/socket'
+export * from '@nano-rpc/client/socket'

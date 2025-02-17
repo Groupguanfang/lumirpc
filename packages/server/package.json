@@ -1,5 +1,5 @@
 {
-  "name": "@nanorpc/server",
+  "name": "@nano-rpc/server",
   "type": "module",
   "version": "0.0.2",
   "description": "Server utils for nanorpc.",
@@ -35,7 +35,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@nanorpc/types": "workspace:*",
+    "@nano-rpc/types": "workspace:*",
     "@types/ws": "^8.5.14",
     "defu": "^6.1.4",
     "nanoid": "^5.1.0",

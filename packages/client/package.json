@@ -1,5 +1,5 @@
 {
-  "name": "@nanorpc/client",
+  "name": "@nano-rpc/client",
   "type": "module",
   "version": "0.0.2",
   "description": "Client to connect a nanorpc server.",
@@ -35,8 +35,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@nanorpc/server": "workspace:*",
-    "@nanorpc/types": "workspace:*",
+    "@nano-rpc/server": "workspace:*",
+    "@nano-rpc/types": "workspace:*",
     "axios": "^1.7.9",
     "nanoid": "^5.1.0"
   }

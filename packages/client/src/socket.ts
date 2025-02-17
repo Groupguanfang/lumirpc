@@ -1,13 +1,14 @@
-import type { Controller } from '@nanorpc/server'
-import type { NoThisMethodMapping } from './types'
+import type { Controller } from '@nano-rpc/server'
+import type { Awaitable } from '@nano-rpc/types'
+import type { InferController, NoThisMethodMapping } from './types'
 import { nanoid } from 'nanoid'
 
 export interface WebSocketRpcClient {
-  request<T extends [string, Controller]>(method: T[0]): NoThisMethodMapping<T[1], false>
+  request<T extends [string, () => Awaitable<Controller>]>(method: T[0]): NoThisMethodMapping<InferController<T[1]>, false>
 }
 
 export function createWebSocketRpcClient(websocketInstance: WebSocket): WebSocketRpcClient {
-  function request<T extends [string, Controller]>(method: T[0]): NoThisMethodMapping<T[1], false> {
+  function request<T extends [string, () => Awaitable<Controller>]>(method: T[0]): NoThisMethodMapping<InferController<T[1]>, false> {
     function createProxy(path: string[] = []): NoThisMethodMapping<any, false> {
       return new Proxy(async () => {}, {
         async apply(_target, _thisArg, argArray) {

@@ -1,1 +1,1 @@
-export * from '@nanorpc/client/axios'
+export * from '@nano-rpc/client/axios'

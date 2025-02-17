@@ -1,6 +1,6 @@
 import type { RpcApp } from 'nanorpc/server'
 import process from 'node:process'
-import { createLoggerPlguin } from '@nanorpc/logger'
+import { createLoggerPlguin } from '@nano-rpc/logger'
 import { createRpcServer, InternalAdapter } from 'nanorpc/server'
 
 // Quickly import all controllers ✨

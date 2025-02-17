@@ -1,5 +1,5 @@
 {
-  "name": "@nanorpc/logger",
+  "name": "@nano-rpc/logger",
   "type": "module",
   "version": "0.0.2",
   "description": "Logger for nanorpc.",

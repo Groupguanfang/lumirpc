@@ -1,4 +1,4 @@
-import type { Awaitable } from '@nanorpc/types'
+import type { Awaitable } from '@nano-rpc/types'
 import type { InferPromise } from './adapter'
 
 export interface Plugin {

@@ -1,9 +1,9 @@
-import type { RpcApp } from '@nanorpc/server'
+import type { RpcApp } from '@nano-rpc/server'
 import type { UnpluginFactory } from 'unplugin'
 import type { NanoRpcOptions } from './types'
 import { exit } from 'node:process'
-import { executePluginHook } from '@nanorpc/server'
-import { createNodeLikeHandler } from '@nanorpc/server/node'
+import { executePluginHook } from '@nano-rpc/server'
+import { createNodeLikeHandler } from '@nano-rpc/server/node'
 import { createUnplugin } from 'unplugin'
 import { buildServer } from './core/build'
 

@@ -59,7 +59,7 @@ importers:
 
   fixtures/vite:
     dependencies:
-      '@nanorpc/logger':
+      '@nano-rpc/logger':
         specifier: workspace:*
         version: link:../../packages/logger
       nanorpc:
@@ -68,10 +68,10 @@ importers:
 
   packages/client:
     dependencies:
-      '@nanorpc/server':
+      '@nano-rpc/server':
         specifier: workspace:*
         version: link:../server
-      '@nanorpc/types':
+      '@nano-rpc/types':
         specifier: workspace:*
         version: link:../types
       axios:
@@ -95,22 +95,22 @@ importers:
 
   packages/nanorpc:
     dependencies:
-      '@nanorpc/client':
+      '@nano-rpc/client':
         specifier: workspace:*
         version: link:../client
-      '@nanorpc/server':
+      '@nano-rpc/server':
         specifier: workspace:*
         version: link:../server
-      '@nanorpc/types':
+      '@nano-rpc/types':
         specifier: workspace:*
         version: link:../types
-      '@nanorpc/unplugin':
+      '@nano-rpc/unplugin':
         specifier: workspace:*
         version: link:../unplugin
 
   packages/server:
     dependencies:
-      '@nanorpc/types':
+      '@nano-rpc/types':
         specifier: workspace:*
         version: link:../types
       '@types/ws':
@@ -144,7 +144,7 @@ importers:
       '@farmfe/core':
         specifier: '>=1'
         version: 1.6.6
-      '@nanorpc/server':
+      '@nano-rpc/server':
         specifier: workspace:*
         version: link:../server
       '@nuxt/kit':

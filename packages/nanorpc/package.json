@@ -65,9 +65,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@nanorpc/client": "workspace:*",
-    "@nanorpc/server": "workspace:*",
-    "@nanorpc/types": "workspace:*",
-    "@nanorpc/unplugin": "workspace:*"
+    "@nano-rpc/client": "workspace:*",
+    "@nano-rpc/server": "workspace:*",
+    "@nano-rpc/types": "workspace:*",
+    "@nano-rpc/unplugin": "workspace:*"
   }
 }

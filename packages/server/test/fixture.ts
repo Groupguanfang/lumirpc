@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 import { createRpcServer, defineController, InternalAdapter } from '../src'
 
-export default defineController('test', {
-  async hello() {
-    return 'Hello, world!'
-  },
+export default defineController('test', () => {
+  return {
+    async hello() {
+      return 'Hello, world!'
+    },
+  }
 })
 
 createRpcServer(InternalAdapter.NodeHttp)

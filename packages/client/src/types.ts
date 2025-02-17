@@ -1,5 +1,5 @@
-import type { Controller, ControllerContext } from '@nanorpc/server'
-import type { Error, Result } from '@nanorpc/types'
+import type { Controller, ControllerContext } from '@nano-rpc/server'
+import type { Awaitable, Error, Result } from '@nano-rpc/types'
 import type { AxiosResponse } from 'axios'
 
 export type InferPromise<T> = T extends Promise<infer R> ? R : T
@@ -12,3 +12,5 @@ export type NoThisMethodMapping<T extends Controller, Axios extends boolean = tr
         : Promise<Result<InferPromise<R>> | Error<InferPromise<R>>>
     : T[K]
 }
+
+export type InferController<T extends () => Awaitable<Controller>> = T extends () => Awaitable<infer R> ? R : Controller
