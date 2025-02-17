@@ -9,8 +9,8 @@ Simple and type safe json-rpc 2.0 server and client solution for node.js.
 Just a vite plugin:
 
 ```ts
-import NanoRpc from 'nanorpc/vite'
 // vite.config.ts
+import NanoRpc from 'nanorpc/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -22,7 +22,7 @@ export default defineConfig({
 })
 ```
 
-And then, create a `main.ts` file in the `server` folder:
+And then, create a `main.ts` file in the `server` folder, it is the entry file for the server:
 
 ```ts
 // server/main.ts
@@ -43,44 +43,65 @@ if (import.meta.env.PROD)
   main()
 ```
 
-Create a `controllers` folder inside the `server` folder:
+Create a `common` folder inside the `server` folder, and create a `welcome.protocol.ts` file inside:
+
+```ts
+// server/common/welcome.protocol.ts
+
+// Create a unique controller id, and export it
+export const WelcomeController = 'WelcomeController'
+
+// Define the controller interface, it will be used in the client and server
+// You can define the same name with the controller id, this can be used as both a value and a type, and it is only imported once!
+export interface WelcomeController {
+  getWelcomeMessage(): Promise<string>
+  getWelcomeMessageWithName(name: string): Promise<string>
+}
+```
+
+Create a `controllers` folder inside the `server` folder, and create a `welcome.controller.ts` file inside:
 
 ```ts
 // server/controllers/welcome.controller.ts
 import { defineController } from 'nanorpc/server'
+// This just import once! Very cool!
+import { WelcomeController } from '../common/welcome.protocol'
 
-export const WelcomeController = 'WelcomeController'
-
-export const welcomeController = defineController(WelcomeController, {
-  async getWelcomeMessage() {
-    return 'Hello World'
-  },
-  async getWelcomeMessageWithName(name: string) {
-    return `Hello ${name}`
-  },
+// Define the controller with the controller id and the controller interface
+export default defineController<WelcomeController>(WelcomeController, () => {
+  return {
+    async getWelcomeMessage() {
+      return 'Hello World'
+    },
+    async getWelcomeMessageWithName(name: string) {
+      return `Hello ${name}`
+    },
+  }
 })
-
-export type WelcomeController = typeof welcomeController
-export default WelcomeController
 ```
 
 In your frontend, you can use the controller with your favorite http client, internally I make a axios helper to make it easier to use the controller for full type safety:
 
 ```ts
+// apis/welcome.ts
+import axios from 'axios'
 import { createAxiosRpcClient } from 'nanorpc/axios'
+// Same with the server side, it only import once 🍺
+import { WelcomeController } from '../common/welcome.protocol'
 
 const axiosInstance = axios.create({
   baseURL: import.meta.url ? '/api' : '/',
   method: 'POST',
 })
 const client = createAxiosRpcClient(axiosInstance)
+// Use the controller with the controller id, it will be auto inferred type from the controller!
 const welcomeController = client.request<WelcomeController>(WelcomeController)
 
 // It return a promise and axios response object with full type safety, will be inferred from the controller!
 welcomeController.getWelcomeMessage()
 ```
 
-## The best DX ✍️
+## The best DX in frontend ✍️
 
 Many of time when we using frontend frameworks like vue, you can create a `utils` folder and create a `rpc.ts` file inside, and then write the base code:
 
@@ -109,6 +130,7 @@ import { useNanoRpc } from '@/utils/rpc'
 export function useWelcomeController() {
   const rpc = useNanoRpc()
 
+  // Use the controller with the controller id, it will be auto inferred type from the controller!
   return rpc.request<WelcomeController>(WelcomeController)
 }
 ```
