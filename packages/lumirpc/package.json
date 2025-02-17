@@ -59,6 +59,11 @@
       "import": "./dist/nuxt.js",
       "require": "./dist/nuxt.cjs"
     },
+    "./socket": {
+      "types": "./dist/socket.d.ts",
+      "import": "./dist/socket.js",
+      "require": "./dist/socket.cjs"
+    },
     "./dist/*": "./dist/*"
   },
   "main": "./dist/node.cjs",
