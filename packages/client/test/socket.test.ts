@@ -2,6 +2,7 @@ import type { Result } from '@nano-rpc/types'
 import { createRpcServer, defineController, InternalAdapter } from '@nano-rpc/server'
 import { typeAssert } from '@nano-rpc/types'
 import { expect, it } from 'vitest'
+import { WebSocket } from 'ws'
 import { createWebSocketRpcClient } from '../src/socket'
 
 it('should work with node socket', async () => {
@@ -18,7 +19,7 @@ it('should work with node socket', async () => {
   await server.listen(PORT)
 
   const ws = new WebSocket(`ws://localhost:${PORT}`)
-  const client = createWebSocketRpcClient(ws)
+  const client = createWebSocketRpcClient(ws as unknown as globalThis.WebSocket)
   const testController = client.request<NodeSocketTestController>(NodeSocketTestController)
   const response = await testController.add(1, 2)
   typeAssert<Result>(response)
