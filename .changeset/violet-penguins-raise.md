@@ -1,0 +1,5 @@
+---
+"lumirpc": patch
+---
+
+fix: exports
