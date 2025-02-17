@@ -1,6 +1,7 @@
-import type { Result } from '@nanorpc/types'
+import type { Awaitable, Result } from '@nanorpc/types'
 import type { NodeHttpServer, NodeWebSocketServer } from '../node'
 import type { Adapter, Handler, InferPromise } from './adapter'
+import type { Controller } from './collector'
 import type { Plugin } from './plugin'
 import { createErrorBuilder, createResultBuilder } from '@nanorpc/types'
 import { get } from 'lodash-es'
@@ -13,8 +14,8 @@ export interface RpcServer {
   listen(port: number): Promise<unknown>
   close(): Promise<void>
   setup(handler: Handler): Promise<void>
-  use(plugin: Plugin): this
-  getPlugins(): Plugin[]
+  use(plugin: Awaitable<Plugin>): this
+  getPlugins(): Awaitable<Plugin>[]
 }
 
 export interface RpcServerApp {
@@ -79,10 +80,23 @@ async function createAdapterServer(adapter: InternalAdapter | Adapter): Promise<
   }
 }
 
+async function getSingletonController(name: string): Promise<Controller | undefined> {
+  const controller = ControllerCollector.initializedContainer.get(name)
+  if (!controller) {
+    const noInitializedController = ControllerCollector.container.get(name)
+    if (!noInitializedController)
+      return undefined
+    const initializedController = await noInitializedController()
+    ControllerCollector.initializedContainer.set(name, initializedController)
+    return initializedController
+  }
+  return controller
+}
+
 export function createHandler(): Handler {
   return async (ctx) => {
     const [controllerName, ...methodNameArray] = ctx.method.split('.')
-    const controller = ControllerCollector.container.get(controllerName)
+    const controller = await getSingletonController(controllerName)
     if (!controller)
       return createErrorBuilder().setErrorCode(-32601).setErrorMessage('Method not found').build()
     const method = get(controller, methodNameArray.join('.'))

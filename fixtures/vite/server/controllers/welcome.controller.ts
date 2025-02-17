@@ -1,15 +1,13 @@
 import { defineController } from 'nanorpc/server'
+import { WelcomeController } from '../../common/welcome.protocol'
 
-export const WelcomeController = 'WelcomeController'
-
-export const welcomeController = defineController(WelcomeController, {
-  async getWelcomeMessage() {
-    return 'Hello World'
-  },
-  async getWelcomeMessageWithName(name: string) {
-    return `Hello ${name}`
-  },
+export default defineController<WelcomeController>(WelcomeController, () => {
+  return {
+    async getWelcomeMessage() {
+      return 'Hello World'
+    },
+    async getWelcomeMessageWithName(name: string) {
+      return `Hello ${name}`
+    },
+  }
 })
-
-export type WelcomeController = typeof welcomeController
-export default WelcomeController

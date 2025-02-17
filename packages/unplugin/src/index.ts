@@ -1,19 +1,38 @@
 import type { RpcApp } from '@nanorpc/server'
 import type { UnpluginFactory } from 'unplugin'
 import type { NanoRpcOptions } from './types'
+import { exit } from 'node:process'
 import { executePluginHook } from '@nanorpc/server'
 import { createNodeLikeHandler } from '@nanorpc/server/node'
 import { createUnplugin } from 'unplugin'
+import { buildServer } from './core/build'
 
 export type { NanoRpcOptions }
+export * from './core/build'
 
-export const unpluginFactory: UnpluginFactory<NanoRpcOptions> = (options) => {
+export const unpluginFactory: UnpluginFactory<NanoRpcOptions> = (options, _meta) => {
   if (!options.devBaseUrl)
     options.devBaseUrl = '/api'
+  if (!options.noExternal)
+    options.noExternal = true
+  if (!options.minify)
+    options.minify = 'esbuild'
+  if (!options.outDir)
+    options.outDir = 'dist/server'
 
   return {
     name: 'naily:nanorpc',
+
     vite: {
+      config(config) {
+        if (!config || !config.build || !config.build.outDir) {
+          config = config || {}
+          config.build = config.build || {}
+          if (!config.build.outDir)
+            config.build.outDir = 'dist/client'
+        }
+      },
+
       async configureServer(server) {
         server.middlewares.use(async (req, res, next) => {
           if (!req.url?.startsWith(options.devBaseUrl!))
@@ -29,6 +48,12 @@ export const unpluginFactory: UnpluginFactory<NanoRpcOptions> = (options) => {
           const nodeHttpHandler = await createNodeLikeHandler(defaultExport.getPlugins())
           await nodeHttpHandler(req, res, defaultExport.getAppHandler())
         })
+      },
+
+      closeBundle() {
+        if (options.buildOnEnd === false)
+          return
+        buildServer(options).then(() => exit(0))
       },
     },
   }

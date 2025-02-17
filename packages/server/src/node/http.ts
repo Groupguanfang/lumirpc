@@ -1,3 +1,4 @@
+import type { Awaitable } from '@nanorpc/types'
 import type { Buffer } from 'node:buffer'
 import type { Adapter, Handler, RpcServer } from '../adapter'
 import type { NodeHttpAfterHandleContext, NodeHttpBeforeHandleContext, NodeHttpOnErrorContext, NodeHttpPlugin } from '../adapter/plugin'
@@ -7,7 +8,7 @@ import { executePluginHook } from '../adapter/plugin'
 export interface NodeHttpServer extends RpcServer {
   listen(port: number): Promise<import('http').Server>
   close(): Promise<void>
-  use(plugin: NodeHttpPlugin): this
+  use(plugin: Awaitable<NodeHttpPlugin>): this
 }
 
 export interface NodeHttpAdapter extends Adapter<NodeHttpServer> {}
@@ -16,7 +17,7 @@ export function createNodeHttpAdapter(): NodeHttpAdapter {
   return async () => {
     const http = await import('node:http')
     let server: import('node:http').Server | null = null
-    const plugins: NodeHttpPlugin[] = []
+    const plugins: Awaitable<NodeHttpPlugin>[] = []
     const nodeLikehandler = await createNodeLikeHandler(plugins)
 
     return {
@@ -67,8 +68,8 @@ export interface NodeLikeHandler {
   (req: import('node:http').IncomingMessage, res: import('node:http').ServerResponse, handler: Handler): Promise<void>
 }
 
-export async function createNodeLikeHandler(plugins: NodeHttpPlugin[]): Promise<NodeLikeHandler> {
-  async function getBeforeHandleMiddlewares(plugins: NodeHttpPlugin[]): Promise<Parameters<NodeHttpBeforeHandleContext['use']>[0][]> {
+export async function createNodeLikeHandler(plugins: Awaitable<NodeHttpPlugin>[]): Promise<NodeLikeHandler> {
+  async function getBeforeHandleMiddlewares(plugins: Awaitable<NodeHttpPlugin>[]): Promise<Parameters<NodeHttpBeforeHandleContext['use']>[0][]> {
     const middlewares: Parameters<NodeHttpBeforeHandleContext['use']>[0][] = []
     await executePluginHook(plugins, 'beforeHandle', [
       {
@@ -81,7 +82,7 @@ export async function createNodeLikeHandler(plugins: NodeHttpPlugin[]): Promise<
     return middlewares
   }
 
-  async function getAfterHandleMiddlewares(plugins: NodeHttpPlugin[]): Promise<Parameters<NodeHttpAfterHandleContext['use']>[0][]> {
+  async function getAfterHandleMiddlewares(plugins: Awaitable<NodeHttpPlugin>[]): Promise<Parameters<NodeHttpAfterHandleContext['use']>[0][]> {
     const middlewares: Parameters<NodeHttpAfterHandleContext['use']>[0][] = []
     await executePluginHook(plugins, 'afterHandle', [
       {
@@ -94,7 +95,7 @@ export async function createNodeLikeHandler(plugins: NodeHttpPlugin[]): Promise<
     return middlewares
   }
 
-  async function getOnErrorMiddlewares(plugins: NodeHttpPlugin[]): Promise<Parameters<NodeHttpOnErrorContext['use']>[0][]> {
+  async function getOnErrorMiddlewares(plugins: Awaitable<NodeHttpPlugin>[]): Promise<Parameters<NodeHttpOnErrorContext['use']>[0][]> {
     const middlewares: Parameters<NodeHttpOnErrorContext['use']>[0][] = []
     await executePluginHook(plugins, 'onError', [
       {

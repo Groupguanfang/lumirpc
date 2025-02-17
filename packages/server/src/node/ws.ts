@@ -1,3 +1,4 @@
+import type { Awaitable } from '@nanorpc/types'
 import type { Adapter, RpcServer } from '../adapter'
 import type { NodeWebSocketAfterHandleContext, NodeWebSocketBeforeHandleContext, NodeWebSocketOnErrorContext, NodeWebSocketPlugin } from '../adapter/plugin'
 import defu from 'defu'
@@ -7,7 +8,7 @@ export interface NodeWebSocketServer extends RpcServer {
   listen(port: number): Promise<import('ws').Server>
   close(): Promise<void>
   overrideWebSocketOptions(overrideOptions: import('ws').ServerOptions): this
-  use(plugin: NodeWebSocketPlugin): this
+  use(plugin: Awaitable<NodeWebSocketPlugin>): this
 }
 
 export interface NodeWebSocketAdapter extends Adapter<NodeWebSocketServer> {}
@@ -16,9 +17,9 @@ export function createNodeWebSocketAdapter(options: import('ws').ServerOptions =
   return async () => {
     const ws = await import('ws')
     let server: import('ws').Server | null = null
-    const plugins: NodeWebSocketPlugin[] = []
+    const plugins: Awaitable<NodeWebSocketPlugin>[] = []
 
-    async function getBeforeHandleMiddlewares(plugins: NodeWebSocketPlugin[]): Promise<Parameters<NodeWebSocketBeforeHandleContext['use']>[0][]> {
+    async function getBeforeHandleMiddlewares(plugins: Awaitable<NodeWebSocketPlugin>[]): Promise<Parameters<NodeWebSocketBeforeHandleContext['use']>[0][]> {
       const middlewares: Parameters<NodeWebSocketBeforeHandleContext['use']>[0][] = []
       await executePluginHook(plugins, 'beforeHandle', [
         {
@@ -31,7 +32,7 @@ export function createNodeWebSocketAdapter(options: import('ws').ServerOptions =
       return middlewares
     }
 
-    async function getAfterHandleMiddlewares(plugins: NodeWebSocketPlugin[]): Promise<Parameters<NodeWebSocketAfterHandleContext['use']>[0][]> {
+    async function getAfterHandleMiddlewares(plugins: Awaitable<NodeWebSocketPlugin>[]): Promise<Parameters<NodeWebSocketAfterHandleContext['use']>[0][]> {
       const middlewares: Parameters<NodeWebSocketAfterHandleContext['use']>[0][] = []
       await executePluginHook(plugins, 'afterHandle', [
         {
@@ -44,7 +45,7 @@ export function createNodeWebSocketAdapter(options: import('ws').ServerOptions =
       return middlewares
     }
 
-    async function getOnErrorMiddlewares(plugins: NodeWebSocketPlugin[]): Promise<Parameters<NodeWebSocketOnErrorContext['use']>[0][]> {
+    async function getOnErrorMiddlewares(plugins: Awaitable<NodeWebSocketPlugin>[]): Promise<Parameters<NodeWebSocketOnErrorContext['use']>[0][]> {
       const middlewares: Parameters<NodeWebSocketOnErrorContext['use']>[0][] = []
       await executePluginHook(plugins, 'onError', [
         {

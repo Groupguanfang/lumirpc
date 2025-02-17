@@ -1,3 +1,6 @@
+import type { Awaitable } from '@nanorpc/types'
+import type { InferPromise } from './adapter'
+
 export interface Plugin {
   name: string
   install?(): unknown | Promise<unknown>
@@ -34,13 +37,28 @@ export interface NodeWebSocketPlugin extends Plugin {
 type InferParams<T> = T extends (...args: infer P) => unknown ? P : []
 type InferReturn<T> = T extends (...args: any[]) => infer R ? R : unknown
 
-export async function executePluginHook<TPlugin extends Plugin, TName extends keyof TPlugin>(plugins: TPlugin[], name: TName, params: InferParams<TPlugin[TName]>): Promise<InferReturn<TPlugin[TName]> | undefined> {
-  let result: InferReturn<TPlugin[TName]> | undefined
+export async function executePluginHook<TPlugin extends Awaitable<Plugin>, TName extends keyof InferPromise<TPlugin>>(plugins: TPlugin[], name: TName, params: InferParams<InferPromise<TPlugin>[TName]>): Promise<InferReturn<InferPromise<TPlugin>[TName]> | undefined> {
+  let result: InferReturn<InferPromise<TPlugin>[TName]> | undefined
   for (const plugin of plugins) {
-    if (typeof plugin[name] !== 'function')
+    await plugin
+    if (typeof (plugin as InferPromise<TPlugin>)[name] !== 'function')
       continue
 
-    result = await plugin[name](...params)
+    result = await (plugin as any)[name](...params)
   }
   return result
+}
+
+export interface PluginMap {
+  WebSocket: NodeWebSocketPlugin
+  Http: NodeHttpPlugin
+}
+
+export type PluginFactory<TPluginOptions, TMap extends PluginMap> = (options: TPluginOptions) => Awaitable<TMap>
+
+export function definePlugin<TPluginOptions = any, TMap extends PluginMap = PluginMap, TFactory = PluginFactory<TPluginOptions, TMap>>(factory: TFactory): TFactory {
+  return (async (options: TPluginOptions) => {
+    const result = await (factory as any)(options)
+    return result
+  }) as TFactory
 }

@@ -1,14 +1,14 @@
 import axios from 'axios'
 import { createAxiosRpcClient } from 'nanorpc/axios'
 import { isError } from 'nanorpc/types'
-import WelcomeController from '../server/controllers/welcome.controller'
+import { WelcomeController } from '../common/welcome.protocol'
 
 const axiosInstance = axios.create({
   baseURL: import.meta.url ? '/api' : '/',
   method: 'POST',
 })
 const client = createAxiosRpcClient(axiosInstance)
-const welcomeController = client.request<WelcomeController>(WelcomeController)
+const welcomeController = client.request<[typeof WelcomeController, WelcomeController]>(WelcomeController)
 
 welcomeController.getWelcomeMessage()
   .then(response => response.data)

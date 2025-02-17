@@ -54,3 +54,4 @@ export function isResult(data: unknown): data is Result {
 }
 
 export function typeAssert<T>(data: unknown): asserts data is T {}
+export type Awaitable<T> = T | Promise<T>
