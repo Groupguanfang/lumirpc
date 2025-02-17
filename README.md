@@ -2,6 +2,8 @@
 
 Simple and type safe json-rpc 2.0 server and client solution for node.js.
 
+> "Lumi" in french means "light", so it is a light weight rpc solution and can be easily used in any project.
+
 ## Maybe the best style for server and client communication using TS ✨
 
 > At first, thanks for [cell.js](https://github.com/cellbang/cell) for the inspiration. 😁
