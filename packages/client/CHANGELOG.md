@@ -1,5 +1,14 @@
 # @nano-rpc/client
 
+## 0.0.3
+
+### Patch Changes
+
+- 56c6702: feat: release
+- Updated dependencies [56c6702]
+  - @nano-rpc/server@0.0.3
+  - @nano-rpc/types@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
