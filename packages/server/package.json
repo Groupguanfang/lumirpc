@@ -1,8 +1,8 @@
 {
-  "name": "@microrpc/server",
+  "name": "@lumirpc/server",
   "type": "module",
-  "version": "0.0.4",
-  "description": "Server utils for microrpc.",
+  "version": "0.0.5",
+  "description": "Server utils for lumirpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
     "es-project-template"
@@ -35,7 +35,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@microrpc/types": "workspace:*",
+    "@lumirpc/types": "workspace:*",
     "@types/ws": "^8.5.14",
     "defu": "^6.1.4",
     "nanoid": "^5.1.0",

@@ -59,19 +59,19 @@ importers:
 
   fixtures/vite:
     dependencies:
-      '@microrpc/logger':
+      '@lumirpc/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      microrpc:
+      lumirpc:
         specifier: workspace:*
-        version: link:../../packages/nanorpc
+        version: link:../../packages/lumirpc
 
   packages/client:
     dependencies:
-      '@microrpc/server':
+      '@lumirpc/server':
         specifier: workspace:*
         version: link:../server
-      '@microrpc/types':
+      '@lumirpc/types':
         specifier: workspace:*
         version: link:../types
       axios:
@@ -86,31 +86,31 @@ importers:
       kleur:
         specifier: ^4.1.5
         version: 4.1.5
-      microrpc:
+      lumirpc:
         specifier: workspace:*
-        version: link:../nanorpc
+        version: link:../lumirpc
       winston:
         specifier: ^3.17.0
         version: 3.17.0
 
-  packages/nanorpc:
+  packages/lumirpc:
     dependencies:
-      '@microrpc/client':
+      '@lumirpc/client':
         specifier: workspace:*
         version: link:../client
-      '@microrpc/server':
+      '@lumirpc/server':
         specifier: workspace:*
         version: link:../server
-      '@microrpc/types':
+      '@lumirpc/types':
         specifier: workspace:*
         version: link:../types
-      '@microrpc/unplugin':
+      '@lumirpc/unplugin':
         specifier: workspace:*
         version: link:../unplugin
 
   packages/server:
     dependencies:
-      '@microrpc/types':
+      '@lumirpc/types':
         specifier: workspace:*
         version: link:../types
       '@types/ws':
@@ -144,7 +144,7 @@ importers:
       '@farmfe/core':
         specifier: '>=1'
         version: 1.6.6
-      '@microrpc/server':
+      '@lumirpc/server':
         specifier: workspace:*
         version: link:../server
       '@nuxt/kit':

@@ -1,5 +1,11 @@
 # @nanorpc/types
 
+## 0.0.5
+
+### Patch Changes
+
+- chore: move to lumirpc
+
 ## 0.0.4
 
 ### Patch Changes

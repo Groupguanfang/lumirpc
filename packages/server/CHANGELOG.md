@@ -1,12 +1,20 @@
-# @microrpc/server
+# @lumirpc/server
+
+## 0.0.5
+
+### Patch Changes
+
+- chore: move to lumirpc
+- Updated dependencies
+  - @lumirpc/types@0.0.5
 
 ## 0.0.4
 
 ### Patch Changes
 
-- f29fb61: chore: move to microrpc
+- f29fb61: chore: move to lumirpc
 - Updated dependencies [f29fb61]
-  - @microrpc/types@0.0.4
+  - @lumirpc/types@0.0.4
 
 ## 0.0.3
 
@@ -14,7 +22,7 @@
 
 - 56c6702: feat: release
 - Updated dependencies [56c6702]
-  - @microrpc/types@0.0.3
+  - @lumirpc/types@0.0.3
 
 ## 0.0.2
 
@@ -22,4 +30,4 @@
 
 - 9a422bf: feat: release first version
 - Updated dependencies [9a422bf]
-  - @microrpc/types@0.0.2
+  - @lumirpc/types@0.0.2

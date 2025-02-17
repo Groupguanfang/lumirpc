@@ -1,5 +1,5 @@
-import type { MicroRpcOptions } from '.'
+import type { LumiRpcOptions } from '.'
 import { createVitePlugin } from 'unplugin'
 import { unpluginFactory } from '.'
 
-export default createVitePlugin(unpluginFactory) as (options: MicroRpcOptions) => any
+export default createVitePlugin(unpluginFactory) as (options: LumiRpcOptions) => any

@@ -8,7 +8,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@microrpc/logger": "workspace:*",
-    "microrpc": "workspace:*"
+    "@lumirpc/logger": "workspace:*",
+    "lumirpc": "workspace:*"
   }
 }

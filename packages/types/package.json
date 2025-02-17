@@ -1,8 +1,8 @@
 {
-  "name": "@microrpc/types",
+  "name": "@lumirpc/types",
   "type": "module",
-  "version": "0.0.4",
-  "description": "Type and edit utils for microrpc.",
+  "version": "0.0.5",
+  "description": "Type and edit utils for lumirpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
     "es-project-template"

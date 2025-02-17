@@ -1,7 +1,7 @@
 {
-  "name": "microrpc",
+  "name": "lumirpc",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Json rpc protocol base &amp; type safe rpc client and server solutions.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
@@ -65,9 +65,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@microrpc/client": "workspace:*",
-    "@microrpc/server": "workspace:*",
-    "@microrpc/types": "workspace:*",
-    "@microrpc/unplugin": "workspace:*"
+    "@lumirpc/client": "workspace:*",
+    "@lumirpc/server": "workspace:*",
+    "@lumirpc/types": "workspace:*",
+    "@lumirpc/unplugin": "workspace:*"
   }
 }

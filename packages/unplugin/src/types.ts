@@ -1,9 +1,9 @@
 import type { InlineConfig } from 'vite'
 
-export interface MicroRpcOptions {
-  /** Base URL for the MicroRPC server in development mode. @default '/api' */
+export interface LumiRpcOptions {
+  /** Base URL for the LumiRPC server in development mode. @default '/api' */
   devBaseUrl?: `/${string}`
-  /** Entry file for the MicroRPC server. */
+  /** Entry file for the LumiRPC server. */
   entry: string
   /** Whether to build the server after the frontend is built. @default true */
   buildOnEnd?: boolean

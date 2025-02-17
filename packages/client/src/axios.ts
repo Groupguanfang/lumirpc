@@ -1,5 +1,5 @@
-import type { Controller } from '@microrpc/server'
-import type { Awaitable } from '@microrpc/types'
+import type { Controller } from '@lumirpc/server'
+import type { Awaitable } from '@lumirpc/types'
 import type { InferController, NoThisMethodMapping } from './types'
 import { nanoid } from 'nanoid'
 import { createEmptyReadonlyProxy } from './utils'

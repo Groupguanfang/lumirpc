@@ -1,9 +1,9 @@
-import MicroRpc from 'microrpc/vite'
+import LumiRpc from 'lumirpc/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
-    MicroRpc({
+    LumiRpc({
       entry: './server/main.ts',
       devBaseUrl: '/api',
     }),

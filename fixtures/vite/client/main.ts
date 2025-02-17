@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { createAxiosRpcClient } from 'microrpc/axios'
-import { isError } from 'microrpc/types'
+import { createAxiosRpcClient } from 'lumirpc/axios'
+import { isError } from 'lumirpc/types'
 import { WelcomeController } from '../common/welcome.protocol'
 
 const axiosInstance = axios.create({

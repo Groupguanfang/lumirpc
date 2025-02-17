@@ -1,16 +1,16 @@
-import type { RpcApp } from '@microrpc/server'
+import type { RpcApp } from '@lumirpc/server'
 import type { UnpluginFactory } from 'unplugin'
-import type { MicroRpcOptions } from './types'
+import type { LumiRpcOptions } from './types'
 import { exit } from 'node:process'
-import { executePluginHook } from '@microrpc/server'
-import { createNodeLikeHandler } from '@microrpc/server/node'
+import { executePluginHook } from '@lumirpc/server'
+import { createNodeLikeHandler } from '@lumirpc/server/node'
 import { createUnplugin } from 'unplugin'
 import { buildServer } from './core/build'
 
-export type { MicroRpcOptions }
+export type { LumiRpcOptions }
 export * from './core/build'
 
-export const unpluginFactory: UnpluginFactory<MicroRpcOptions> = (options, _meta) => {
+export const unpluginFactory: UnpluginFactory<LumiRpcOptions> = (options, _meta) => {
   if (!options.devBaseUrl)
     options.devBaseUrl = '/api'
   if (!options.noExternal)
@@ -21,7 +21,7 @@ export const unpluginFactory: UnpluginFactory<MicroRpcOptions> = (options, _meta
     options.outDir = 'dist/server'
 
   return {
-    name: 'naily:microrpc',
+    name: 'naily:lumirpc',
 
     vite: {
       config(config) {
@@ -39,10 +39,10 @@ export const unpluginFactory: UnpluginFactory<MicroRpcOptions> = (options, _meta
             return next()
           const mod = await server.ssrLoadModule(options.entry, { fixStacktrace: true }) || {}
           if (!mod.default)
-            throw new Error('The microrpc server entry file must have a default export.')
+            throw new Error('The lumirpc server entry file must have a default export.')
           const defaultExport: RpcApp = typeof mod.default === 'function' ? await mod.default() : mod.default
           if (typeof defaultExport !== 'object' || typeof defaultExport.getAppHandler !== 'function' || typeof defaultExport.getPlugins !== 'function')
-            throw new Error('The microrpc server entry file must export a default function that returns an RpcApp object or an object that implements the RpcApp interface.')
+            throw new Error('The lumirpc server entry file must export a default function that returns an RpcApp object or an object that implements the RpcApp interface.')
 
           await executePluginHook(defaultExport.getPlugins(), 'install', [])
           const nodeHttpHandler = await createNodeLikeHandler(defaultExport.getPlugins())
@@ -59,5 +59,5 @@ export const unpluginFactory: UnpluginFactory<MicroRpcOptions> = (options, _meta
   }
 }
 
-export const MicroRpcUnplugin = createUnplugin(unpluginFactory)
-export default MicroRpcUnplugin
+export const LumiRpcUnplugin = createUnplugin(unpluginFactory)
+export default LumiRpcUnplugin

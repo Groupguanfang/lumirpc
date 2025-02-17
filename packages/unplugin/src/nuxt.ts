@@ -1,14 +1,14 @@
-import type { MicroRpcOptions } from './types'
+import type { LumiRpcOptions } from './types'
 import { addVitePlugin, defineNuxtModule } from '@nuxt/kit'
 import vite from './vite'
 import '@nuxt/schema'
 
-export interface ModuleOptions extends MicroRpcOptions {}
+export interface ModuleOptions extends LumiRpcOptions {}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'naily:microrpc',
-    configKey: 'microrpc',
+    name: 'naily:lumirpc',
+    configKey: 'lumirpc',
   },
   defaults: {
     // ...default options

@@ -1,7 +1,7 @@
-import type { RpcApp } from 'microrpc/server'
+import type { RpcApp } from 'lumirpc/server'
 import process from 'node:process'
-import { createLoggerPlguin } from '@microrpc/logger'
-import { createRpcServer, InternalAdapter } from 'microrpc/server'
+import { createLoggerPlguin } from '@lumirpc/logger'
+import { createRpcServer, InternalAdapter } from 'lumirpc/server'
 
 // Quickly import all controllers ✨
 import.meta.glob('./controllers/**/*.controller.ts', { eager: true })

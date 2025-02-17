@@ -1,5 +1,5 @@
-import type { Error as RpcError } from '@microrpc/types'
-import { createErrorBuilder, typeAssert } from '@microrpc/types'
+import type { Error as RpcError } from '@lumirpc/types'
+import { createErrorBuilder, typeAssert } from '@lumirpc/types'
 import { nanoid } from 'nanoid'
 
 export class RpcException<TData = unknown> extends Error {

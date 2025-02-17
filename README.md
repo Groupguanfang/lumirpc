@@ -1,4 +1,4 @@
-# microrpc
+# lumirpc
 
 Simple and type safe json-rpc 2.0 server and client solution for node.js.
 
@@ -10,12 +10,12 @@ Just a vite plugin:
 
 ```ts
 // vite.config.ts
-import MicroRpc from 'microrpc/vite'
+import LumiRpc from 'lumirpc/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
-    MicroRpc({
+    LumiRpc({
       entry: './server/main.ts',
     })
   ]
@@ -26,9 +26,9 @@ And then, create a `main.ts` file in the `server` folder, it is the entry file f
 
 ```ts
 // server/main.ts
-import type { RpcApp } from 'microrpc/server'
+import type { RpcApp } from 'lumirpc/server'
 import process from 'node:process'
-import { createRpcServer, InternalAdapter } from 'microrpc/server'
+import { createRpcServer, InternalAdapter } from 'lumirpc/server'
 
 import.meta.glob('./controllers/**/*.controller.ts', { eager: true })
 
@@ -63,7 +63,7 @@ Create a `controllers` folder inside the `server` folder, and create a `welcome.
 
 ```ts
 // server/controllers/welcome.controller.ts
-import { defineController } from 'microrpc/server'
+import { defineController } from 'lumirpc/server'
 // This just import once! Very cool!
 import { WelcomeController } from '../common/welcome.protocol'
 
@@ -85,7 +85,7 @@ In your frontend, you can use the controller with your favorite http client, int
 ```ts
 // apis/welcome.ts
 import axios from 'axios'
-import { createAxiosRpcClient } from 'microrpc/axios'
+import { createAxiosRpcClient } from 'lumirpc/axios'
 // Same with the server side, it only import once 🍺
 import { WelcomeController } from '../common/welcome.protocol'
 
@@ -107,11 +107,11 @@ Many of time when we using frontend frameworks like vue, you can create a `utils
 
 ```ts
 // utils/rpc.ts
-import { createAxiosRpcClient } from 'microrpc/axios'
+import { createAxiosRpcClient } from 'lumirpc/axios'
 import { defineStore } from 'pinia'
 
 // Using pinia to make this hook as singleton
-export const useMicroRpc = defineStore('microrpc', () => {
+export const useLumiRpc = defineStore('lumirpc', () => {
   const axiosInstance = axios.create({
     baseURL: import.meta.url ? '/api' : '/',
     method: 'POST',
@@ -125,10 +125,10 @@ Create a `apis` folder and create a `welcome.ts` file inside:
 
 ```ts
 // apis/welcome.ts
-import { useMicroRpc } from '@/utils/rpc'
+import { useLumiRpc } from '@/utils/rpc'
 
 export function useWelcomeController() {
-  const rpc = useMicroRpc()
+  const rpc = useLumiRpc()
 
   // Use the controller with the controller id, it will be auto inferred type from the controller!
   return rpc.request<WelcomeController>(WelcomeController)

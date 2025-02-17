@@ -1,8 +1,8 @@
 import type { InlineConfig } from 'vite'
-import type { MicroRpcOptions } from '../types'
+import type { LumiRpcOptions } from '../types'
 import { build, mergeConfig } from 'vite'
 
-export function buildServer(options: MicroRpcOptions): ReturnType<typeof build> {
+export function buildServer(options: LumiRpcOptions): ReturnType<typeof build> {
   if (!options.noExternal)
     options.noExternal = true
   if (!options.minify)

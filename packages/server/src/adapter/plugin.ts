@@ -1,4 +1,4 @@
-import type { Awaitable } from '@microrpc/types'
+import type { Awaitable } from '@lumirpc/types'
 import type { InferPromise } from './adapter'
 
 export interface Plugin {

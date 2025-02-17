@@ -1,4 +1,4 @@
-import type { Awaitable, Id } from '@microrpc/types'
+import type { Awaitable, Id } from '@lumirpc/types'
 
 export interface Controller {
   [key: string]: (this: ControllerContext, ...args: any[]) => Promise<unknown>

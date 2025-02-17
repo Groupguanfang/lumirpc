@@ -1,5 +1,5 @@
 import k from 'kleur'
-import { definePlugin } from 'microrpc/server'
+import { definePlugin } from 'lumirpc/server'
 import winston from 'winston'
 
 export interface LoggerOptions extends winston.LoggerOptions {
@@ -37,7 +37,7 @@ export const createLoggerPlguin = definePlugin<LoggerOptions>((options = {}) => 
 
   return {
     WebSocket: {
-      name: 'naily:microrpc-logger',
+      name: 'naily:lumirpc-logger',
       beforeHandle(ctx) {
         ctx.use((ws) => {
           ws.addEventListener('open', (e) => {
@@ -53,7 +53,7 @@ export const createLoggerPlguin = definePlugin<LoggerOptions>((options = {}) => 
       },
     },
     Http: {
-      name: 'naily:microrpc-logger',
+      name: 'naily:lumirpc-logger',
       beforeHandle(ctx) {
         ctx.use(req => logger.info(`${req.method} ${req.url}`))
       },
