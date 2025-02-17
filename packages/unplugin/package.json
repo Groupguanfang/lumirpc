@@ -1,7 +1,7 @@
 {
   "name": "@lumirpc/unplugin",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Unplugin for lumirpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [

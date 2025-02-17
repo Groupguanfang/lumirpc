@@ -1,5 +1,13 @@
 # @nano-rpc/logger
 
+## 0.0.6
+
+### Patch Changes
+
+- 9eb8d92: fix: deps
+- Updated dependencies [9eb8d92]
+  - lumirpc@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes

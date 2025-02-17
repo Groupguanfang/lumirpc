@@ -1,5 +1,16 @@
 # lumirpc
 
+## 0.0.6
+
+### Patch Changes
+
+- 9eb8d92: fix: deps
+- Updated dependencies [9eb8d92]
+  - @lumirpc/unplugin@0.0.6
+  - @lumirpc/client@0.0.6
+  - @lumirpc/server@0.0.6
+  - @lumirpc/types@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes
