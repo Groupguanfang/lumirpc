@@ -1,7 +1,7 @@
 {
   "name": "@microrpc/logger",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Logger for microrpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [

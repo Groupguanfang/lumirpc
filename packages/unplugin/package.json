@@ -1,7 +1,7 @@
 {
   "name": "@microrpc/unplugin",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Unplugin for microrpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [

@@ -1,5 +1,11 @@
 # @nanorpc/types
 
+## 0.0.4
+
+### Patch Changes
+
+- f29fb61: chore: move to microrpc
+
 ## 0.0.3
 
 ### Patch Changes

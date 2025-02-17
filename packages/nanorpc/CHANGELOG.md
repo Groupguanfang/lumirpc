@@ -1,5 +1,16 @@
 # microrpc
 
+## 0.0.4
+
+### Patch Changes
+
+- f29fb61: chore: move to microrpc
+- Updated dependencies [f29fb61]
+  - @microrpc/unplugin@0.0.4
+  - @microrpc/client@0.0.4
+  - @microrpc/server@0.0.4
+  - @microrpc/types@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
