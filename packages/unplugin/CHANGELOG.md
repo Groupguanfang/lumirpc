@@ -1,4 +1,4 @@
-# @nano-rpc/unplugin
+# @microrpc/unplugin
 
 ## 0.0.3
 
@@ -6,7 +6,7 @@
 
 - 56c6702: feat: release
 - Updated dependencies [56c6702]
-  - @nano-rpc/server@0.0.3
+  - @microrpc/server@0.0.3
 
 ## 0.0.2
 
@@ -14,4 +14,4 @@
 
 - 9a422bf: feat: release first version
 - Updated dependencies [9a422bf]
-  - @nano-rpc/server@0.0.2
+  - @microrpc/server@0.0.2

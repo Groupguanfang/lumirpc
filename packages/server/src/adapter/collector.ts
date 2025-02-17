@@ -1,4 +1,4 @@
-import type { Awaitable, Id } from '@nano-rpc/types'
+import type { Awaitable, Id } from '@microrpc/types'
 
 export interface Controller {
   [key: string]: (this: ControllerContext, ...args: any[]) => Promise<unknown>

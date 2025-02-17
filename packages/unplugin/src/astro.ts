@@ -1,9 +1,9 @@
-import type { NanoRpcOptions } from './types'
+import type { MicroRpcOptions } from './types'
 
 import unplugin from '.'
 
-export default (options: NanoRpcOptions): any => ({
-  name: 'naily:nanorpc',
+export default (options: MicroRpcOptions): any => ({
+  name: 'naily:microrpc',
   hooks: {
     'astro:config:setup': async (astro: any) => {
       astro.config.vite.plugins ||= []

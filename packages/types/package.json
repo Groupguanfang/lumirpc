@@ -1,8 +1,8 @@
 {
-  "name": "@nano-rpc/types",
+  "name": "@microrpc/types",
   "type": "module",
   "version": "0.0.3",
-  "description": "Type and edit utils for nanorpc.",
+  "description": "Type and edit utils for microrpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
     "es-project-template"

@@ -1,5 +1,5 @@
 import k from 'kleur'
-import { definePlugin } from 'nanorpc/server'
+import { definePlugin } from 'microrpc/server'
 import winston from 'winston'
 
 export interface LoggerOptions extends winston.LoggerOptions {
@@ -37,7 +37,7 @@ export const createLoggerPlguin = definePlugin<LoggerOptions>((options = {}) => 
 
   return {
     WebSocket: {
-      name: 'naily:nanorpc-logger',
+      name: 'naily:microrpc-logger',
       beforeHandle(ctx) {
         ctx.use((ws) => {
           ws.addEventListener('open', (e) => {
@@ -53,7 +53,7 @@ export const createLoggerPlguin = definePlugin<LoggerOptions>((options = {}) => 
       },
     },
     Http: {
-      name: 'naily:nanorpc-logger',
+      name: 'naily:microrpc-logger',
       beforeHandle(ctx) {
         ctx.use(req => logger.info(`${req.method} ${req.url}`))
       },

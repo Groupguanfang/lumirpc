@@ -1,4 +1,4 @@
-import NanoRpc from '@nano-rpc/unplugin/vite'
+import MicroRpc from '@microrpc/unplugin/vite'
 
-export * from '@nano-rpc/unplugin/vite'
-export default NanoRpc
+export * from '@microrpc/unplugin/vite'
+export default MicroRpc

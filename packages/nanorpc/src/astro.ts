@@ -1,4 +1,4 @@
-import NanoRpc from '@nano-rpc/unplugin/astro'
+import MicroRpc from '@microrpc/unplugin/astro'
 
-export * from '@nano-rpc/unplugin/astro'
-export default NanoRpc
+export * from '@microrpc/unplugin/astro'
+export default MicroRpc

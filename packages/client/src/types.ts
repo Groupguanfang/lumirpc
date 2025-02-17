@@ -1,5 +1,5 @@
-import type { Controller, ControllerContext } from '@nano-rpc/server'
-import type { Awaitable, Error, Result } from '@nano-rpc/types'
+import type { Controller, ControllerContext } from '@microrpc/server'
+import type { Awaitable, Error, Result } from '@microrpc/types'
 import type { AxiosResponse } from 'axios'
 
 export type InferPromise<T> = T extends Promise<infer R> ? R : T

@@ -1,4 +1,4 @@
-# nanorpc
+# microrpc
 
 Simple and type safe json-rpc 2.0 server and client solution for node.js.
 
@@ -10,12 +10,12 @@ Just a vite plugin:
 
 ```ts
 // vite.config.ts
-import NanoRpc from 'nanorpc/vite'
+import MicroRpc from 'microrpc/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [
-    NanoRpc({
+    MicroRpc({
       entry: './server/main.ts',
     })
   ]
@@ -26,9 +26,9 @@ And then, create a `main.ts` file in the `server` folder, it is the entry file f
 
 ```ts
 // server/main.ts
-import type { RpcApp } from 'nanorpc/server'
+import type { RpcApp } from 'microrpc/server'
 import process from 'node:process'
-import { createRpcServer, InternalAdapter } from 'nanorpc/server'
+import { createRpcServer, InternalAdapter } from 'microrpc/server'
 
 import.meta.glob('./controllers/**/*.controller.ts', { eager: true })
 
@@ -63,7 +63,7 @@ Create a `controllers` folder inside the `server` folder, and create a `welcome.
 
 ```ts
 // server/controllers/welcome.controller.ts
-import { defineController } from 'nanorpc/server'
+import { defineController } from 'microrpc/server'
 // This just import once! Very cool!
 import { WelcomeController } from '../common/welcome.protocol'
 
@@ -85,7 +85,7 @@ In your frontend, you can use the controller with your favorite http client, int
 ```ts
 // apis/welcome.ts
 import axios from 'axios'
-import { createAxiosRpcClient } from 'nanorpc/axios'
+import { createAxiosRpcClient } from 'microrpc/axios'
 // Same with the server side, it only import once 🍺
 import { WelcomeController } from '../common/welcome.protocol'
 
@@ -107,11 +107,11 @@ Many of time when we using frontend frameworks like vue, you can create a `utils
 
 ```ts
 // utils/rpc.ts
-import { createAxiosRpcClient } from 'nanorpc/axios'
+import { createAxiosRpcClient } from 'microrpc/axios'
 import { defineStore } from 'pinia'
 
 // Using pinia to make this hook as singleton
-export const useNanoRpc = defineStore('nanorpc', () => {
+export const useMicroRpc = defineStore('microrpc', () => {
   const axiosInstance = axios.create({
     baseURL: import.meta.url ? '/api' : '/',
     method: 'POST',
@@ -125,10 +125,10 @@ Create a `apis` folder and create a `welcome.ts` file inside:
 
 ```ts
 // apis/welcome.ts
-import { useNanoRpc } from '@/utils/rpc'
+import { useMicroRpc } from '@/utils/rpc'
 
 export function useWelcomeController() {
-  const rpc = useNanoRpc()
+  const rpc = useMicroRpc()
 
   // Use the controller with the controller id, it will be auto inferred type from the controller!
   return rpc.request<WelcomeController>(WelcomeController)

@@ -1,4 +1,4 @@
-import NanoRpc from '@nano-rpc/unplugin/nuxt'
+import MicroRpc from '@microrpc/unplugin/nuxt'
 
-export * from '@nano-rpc/unplugin/nuxt'
-export default NanoRpc
+export * from '@microrpc/unplugin/nuxt'
+export default MicroRpc

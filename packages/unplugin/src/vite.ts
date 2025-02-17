@@ -1,5 +1,5 @@
-import type { NanoRpcOptions } from '.'
+import type { MicroRpcOptions } from '.'
 import { createVitePlugin } from 'unplugin'
 import { unpluginFactory } from '.'
 
-export default createVitePlugin(unpluginFactory) as (options: NanoRpcOptions) => any
+export default createVitePlugin(unpluginFactory) as (options: MicroRpcOptions) => any

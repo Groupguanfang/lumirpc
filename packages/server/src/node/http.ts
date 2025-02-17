@@ -1,4 +1,4 @@
-import type { Awaitable } from '@nano-rpc/types'
+import type { Awaitable } from '@microrpc/types'
 import type { Buffer } from 'node:buffer'
 import type { Adapter, Handler, RpcServer } from '../adapter'
 import type { NodeHttpAfterHandleContext, NodeHttpBeforeHandleContext, NodeHttpOnErrorContext, NodeHttpPlugin } from '../adapter/plugin'

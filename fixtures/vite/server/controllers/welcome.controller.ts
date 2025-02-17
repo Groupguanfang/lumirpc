@@ -1,4 +1,4 @@
-import { defineController } from 'nanorpc/server'
+import { defineController } from 'microrpc/server'
 import { WelcomeController } from '../../common/welcome.protocol'
 
 export default defineController<WelcomeController>(WelcomeController, () => {

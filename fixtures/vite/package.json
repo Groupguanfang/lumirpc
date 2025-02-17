@@ -8,7 +8,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@nano-rpc/logger": "workspace:*",
-    "nanorpc": "workspace:*"
+    "@microrpc/logger": "workspace:*",
+    "microrpc": "workspace:*"
   }
 }

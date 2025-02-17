@@ -1,9 +1,9 @@
 import type { InlineConfig } from 'vite'
 
-export interface NanoRpcOptions {
-  /** Base URL for the NanoRPC server in development mode. @default '/api' */
+export interface MicroRpcOptions {
+  /** Base URL for the MicroRPC server in development mode. @default '/api' */
   devBaseUrl?: `/${string}`
-  /** Entry file for the NanoRPC server. */
+  /** Entry file for the MicroRPC server. */
   entry: string
   /** Whether to build the server after the frontend is built. @default true */
   buildOnEnd?: boolean

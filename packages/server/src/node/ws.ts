@@ -1,4 +1,4 @@
-import type { Awaitable } from '@nano-rpc/types'
+import type { Awaitable } from '@microrpc/types'
 import type { Adapter, RpcServer } from '../adapter'
 import type { NodeWebSocketAfterHandleContext, NodeWebSocketBeforeHandleContext, NodeWebSocketOnErrorContext, NodeWebSocketPlugin } from '../adapter/plugin'
 import defu from 'defu'

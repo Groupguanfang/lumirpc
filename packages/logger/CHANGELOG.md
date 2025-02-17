@@ -1,4 +1,4 @@
-# @nanorpc/logger
+# @nano-rpc/logger
 
 ## 0.0.3
 
@@ -6,7 +6,7 @@
 
 - 56c6702: feat: release
 - Updated dependencies [56c6702]
-  - nanorpc@0.0.3
+  - microrpc@0.0.3
 
 ## 0.0.2
 
@@ -14,4 +14,5 @@
 
 - 9a422bf: feat: release first version
 - Updated dependencies [9a422bf]
-  - nanorpc@0.0.2
+  - microrpc@0.0.2
+microrpc

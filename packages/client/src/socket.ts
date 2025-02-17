@@ -1,10 +1,11 @@
-import type { Controller } from '@nano-rpc/server'
-import type { Awaitable } from '@nano-rpc/types'
+import type { Controller } from '@microrpc/server'
+import type { Awaitable } from '@microrpc/types'
 import type { InferController, NoThisMethodMapping } from './types'
 import { nanoid } from 'nanoid'
 
 export interface WebSocketRpcClient {
   request<T extends [string, () => Awaitable<Controller>]>(method: T[0]): NoThisMethodMapping<InferController<T[1]>, false>
+  request<T extends Record<string, (...args: any[]) => any>>(method: unknown): NoThisMethodMapping<T, false>
 }
 
 export function createWebSocketRpcClient(websocketInstance: WebSocket): WebSocketRpcClient {

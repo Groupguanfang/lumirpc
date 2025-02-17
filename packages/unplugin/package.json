@@ -1,8 +1,8 @@
 {
-  "name": "@nano-rpc/unplugin",
+  "name": "@microrpc/unplugin",
   "type": "module",
   "version": "0.0.3",
-  "description": "Unplugin for nanorpc.",
+  "description": "Unplugin for microrpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
     "es-project-template"
@@ -82,7 +82,7 @@
     }
   },
   "dependencies": {
-    "@nano-rpc/server": "workspace:*",
+    "@microrpc/server": "workspace:*",
     "nanoid": "^5.1.0",
     "unplugin": "^2.2.0",
     "vite": "^6.1.0"

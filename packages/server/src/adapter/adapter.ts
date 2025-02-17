@@ -1,4 +1,4 @@
-import type { Error, Result } from '@nano-rpc/types'
+import type { Error, Result } from '@microrpc/types'
 import type { RpcServer } from './app'
 import type { ControllerContext } from './collector'
 

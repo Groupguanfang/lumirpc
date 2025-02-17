@@ -1,8 +1,8 @@
 {
-  "name": "@nano-rpc/logger",
+  "name": "@microrpc/logger",
   "type": "module",
   "version": "0.0.3",
-  "description": "Logger for nanorpc.",
+  "description": "Logger for microrpc.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
     "es-project-template"
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "kleur": "^4.1.5",
-    "nanorpc": "workspace:*",
+    "microrpc": "workspace:*",
     "winston": "^3.17.0"
   }
 }

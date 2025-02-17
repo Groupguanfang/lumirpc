@@ -59,19 +59,19 @@ importers:
 
   fixtures/vite:
     dependencies:
-      '@nano-rpc/logger':
+      '@microrpc/logger':
         specifier: workspace:*
         version: link:../../packages/logger
-      nanorpc:
+      microrpc:
         specifier: workspace:*
         version: link:../../packages/nanorpc
 
   packages/client:
     dependencies:
-      '@nano-rpc/server':
+      '@microrpc/server':
         specifier: workspace:*
         version: link:../server
-      '@nano-rpc/types':
+      '@microrpc/types':
         specifier: workspace:*
         version: link:../types
       axios:
@@ -86,7 +86,7 @@ importers:
       kleur:
         specifier: ^4.1.5
         version: 4.1.5
-      nanorpc:
+      microrpc:
         specifier: workspace:*
         version: link:../nanorpc
       winston:
@@ -95,22 +95,22 @@ importers:
 
   packages/nanorpc:
     dependencies:
-      '@nano-rpc/client':
+      '@microrpc/client':
         specifier: workspace:*
         version: link:../client
-      '@nano-rpc/server':
+      '@microrpc/server':
         specifier: workspace:*
         version: link:../server
-      '@nano-rpc/types':
+      '@microrpc/types':
         specifier: workspace:*
         version: link:../types
-      '@nano-rpc/unplugin':
+      '@microrpc/unplugin':
         specifier: workspace:*
         version: link:../unplugin
 
   packages/server:
     dependencies:
-      '@nano-rpc/types':
+      '@microrpc/types':
         specifier: workspace:*
         version: link:../types
       '@types/ws':
@@ -144,7 +144,7 @@ importers:
       '@farmfe/core':
         specifier: '>=1'
         version: 1.6.6
-      '@nano-rpc/server':
+      '@microrpc/server':
         specifier: workspace:*
         version: link:../server
       '@nuxt/kit':

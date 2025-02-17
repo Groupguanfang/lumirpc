@@ -1,4 +1,4 @@
-import type { Controller } from 'nanorpc/server'
+import type { Controller } from 'microrpc/server'
 
 export const WelcomeController = 'WelcomeController'
 export interface WelcomeController extends Controller {

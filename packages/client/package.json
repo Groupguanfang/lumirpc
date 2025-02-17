@@ -1,8 +1,8 @@
 {
-  "name": "@nano-rpc/client",
+  "name": "@microrpc/client",
   "type": "module",
   "version": "0.0.3",
-  "description": "Client to connect a nanorpc server.",
+  "description": "Client to connect a microrpc server.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
   "keywords": [
     "es-project-template"
@@ -35,8 +35,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@nano-rpc/server": "workspace:*",
-    "@nano-rpc/types": "workspace:*",
+    "@microrpc/server": "workspace:*",
+    "@microrpc/types": "workspace:*",
     "axios": "^1.7.9",
     "nanoid": "^5.1.0"
   }

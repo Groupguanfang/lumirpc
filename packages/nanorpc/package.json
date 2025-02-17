@@ -1,5 +1,5 @@
 {
-  "name": "nanorpc",
+  "name": "microrpc",
   "type": "module",
   "version": "0.0.3",
   "description": "Json rpc protocol base &amp; type safe rpc client and server solutions.",
@@ -65,9 +65,9 @@
     "access": "public"
   },
   "dependencies": {
-    "@nano-rpc/client": "workspace:*",
-    "@nano-rpc/server": "workspace:*",
-    "@nano-rpc/types": "workspace:*",
-    "@nano-rpc/unplugin": "workspace:*"
+    "@microrpc/client": "workspace:*",
+    "@microrpc/server": "workspace:*",
+    "@microrpc/types": "workspace:*",
+    "@microrpc/unplugin": "workspace:*"
   }
 }
