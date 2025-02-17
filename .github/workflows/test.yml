@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16, 18, 20, 22] # 在这些 Node.js 版本中运行测试
+        node-version: [18, 20, 22] # 在这些 Node.js 版本中运行测试
 
     steps:
       - name: Checkout repository
