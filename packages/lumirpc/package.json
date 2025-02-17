@@ -4,6 +4,17 @@
   "version": "0.0.6",
   "description": "Json rpc protocol base &amp; type safe rpc client and server solutions.",
   "author": "Naily Zero <zero@naily.cc> (https://naily.cc)",
+  "license": "MIT",
+  "homepage": "https://github.com/groupguanfang/lumirpc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/groupguanfang/lumirpc.git",
+    "directory": "packages/lumirpc"
+  },
+  "bugs": {
+    "email": "zero@naily.cc",
+    "url": "https://github.com/groupguanfang/lumirpc/issues"
+  },
   "keywords": [
     "es-project-template"
   ],

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://jsr.io/schema/config-file.v1.json",
+  "name": "@lumirpc/lumirpc",
+  "version": "0.0.6",
+  "exports": {
+    "./astro": "./src/astro.ts",
+    "./axios": "./src/axios.ts",
+    "./node": "./src/node.ts",
+    "./nuxt": "./src/nuxt.ts",
+    "./server": "./src/server.ts",
+    "./socket": "./src/socket.ts",
+    "./types": "./src/types.ts",
+    "./unplugin": "./src/unplugin.ts",
+    "./vite": "./src/vite.ts"
+  },
+  "publish": {
+    "include": ["src"]
+  },
+  "license": "MIT"
+}
